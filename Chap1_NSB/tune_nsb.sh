@@ -10,10 +10,10 @@ MCFILE=/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_2276/sim_tela
 # Input real DL1 file. 
 DL1DATA=`ls /fefs/aswg/data/real/DL1/20*/v*/tailcut84/dl1_LST-1.Run09686.0000.h5`
 
-# Config file. Must include "image_modifier" section in this config file!
+# Config file. Must include "image_modifier" section in this config file! (It works without "image_modifier" section, but the output config file will not be written)
 CONFIG=/home/kenta.terauchi/Work/oda2023/standard_config.json
 
-# Outout config file
+# Outout config file with appropriate "image_modifier" parameters.
 OUTPUTPATH=/home/kenta.terauchi/Work/oda2023/output_standard_config.json
 
 lstchain_tune_nsb \

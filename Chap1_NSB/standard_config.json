@@ -1,6 +1,6 @@
 {
   "image_modifier": {
-    "increase_nsb": true,
+    "increase_nsb": false,
     "extra_noise_in_dim_pixels": 1.0,
     "extra_bias_in_dim_pixels": 1.0,
     "transition_charge": 8,
