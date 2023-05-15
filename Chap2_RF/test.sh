@@ -4,7 +4,7 @@
 #SBATCH -N 4
 #SBATCH -n 1
 #SBATCH --mem=10G
-#SBATCH -o joblogdir/%j.out
+#SBATCH -o %j.out
 #--exclusive
 
 
@@ -13,8 +13,8 @@
 ###################
 
 ### memory usage
-ulimit -l unlimited
-ulimit -s unlimited
+# ulimit -l unlimited
+# ulimit -s unlimited
 ### print functions
 function green () {
     printf "\e[32m%s\e[m \n" "$1"
@@ -25,10 +25,12 @@ function yellow () {
 function magenta () {
     printf "\e[35m%s\e[m \n" "$1"
 }
+function get_now() {
+    TZ=Asia/Tokyo date '+%H:%M:%S %Y%b%d'
+}
 ### start
 start_time=`date +%s`
-START=`TZ=Asia/Tokyo date '+%Y%m%d%H%M'`
-yellow "Stating at ${START}JST"
+yellow "Starting the job at `get_now`"
 
 
 ##########################
@@ -36,14 +38,15 @@ yellow "Stating at ${START}JST"
 ##########################
 
 ### activate conda itself
-# . /fefs/aswg/software/conda/etc/profile.d/conda.sh
+# source /fefs/aswg/software/conda/etc/profile.d/conda.sh
+source "/home/shotaro.abe/work/anaconda3/etc/profile.d/conda.sh"
 ### specify the environment
-# env_name=lstchain_v0.9.9
-# conda activate ${env_name}
-# green "[CONDA INFO]"
-# conda info
-# green "[ENVIRONMENT]"
-# conda list -n ${env_name}
+env_name=lstchain_v0.9.9
+conda activate ${env_name}
+green "[CONDA INFO]"
+conda info
+green "[ENVIRONMENT]"
+conda list -n ${env_name}
 
 
 ##############
@@ -77,9 +80,10 @@ COMMAND="
 ### EXECUTION ###
 #################
 
+magenta "---- PYTHON COMMAND STARTING -----"
 echo "${COMMAND_TEST}"
 ${COMMAND_TEST}
-# $COMMAND
+magenta "----- PYTHON COMMAND ENDED -----"
 
 
 ###############
@@ -87,10 +91,9 @@ ${COMMAND_TEST}
 ###############
 
 ### deactivation
-# conda deactivate
+conda deactivate
 ### end time
-END=`TZ=Asia/Tokyo date`
-yellow "Ending on ${END}"
+yellow "Ending the job at `get_now`"
 end_time=`date +%s`
 run_time=$((end_time - start_time))
 echo "running time:" $run_time "[sec]"
