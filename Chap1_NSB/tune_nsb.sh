@@ -4,6 +4,8 @@
 #
 #
 
+##### Config #####
+
 # Input MC file. Must be a simtel file! 
 MCFILE=/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_2276/sim_telarray/node_theta_44.927_az_85.716_/output_v1.4/simtel_corsika_theta_44.927_az_85.716_run1.simtel.gz
 
@@ -11,10 +13,13 @@ MCFILE=/fefs/aswg/data/mc/DL0/LSTProd2/TrainingDataset/Protons/dec_2276/sim_tela
 DL1DATA=`ls /fefs/aswg/data/real/DL1/20*/v*/tailcut84/dl1_LST-1.Run09686.0000.h5`
 
 # Config file. Must include "image_modifier" section in this config file! (It works without "image_modifier" section, but the output config file will not be written)
-CONFIG=/home/kenta.terauchi/Work/oda2023/standard_config.json
+CONFIG=dl1ab_standard_config.json
 
 # Outout config file with appropriate "image_modifier" parameters.
-OUTPUTPATH=/home/kenta.terauchi/Work/oda2023/output_standard_config.json
+OUTPUTPATH=output_dl1ab_standard_config.json
+
+
+##### Execution #####
 
 lstchain_tune_nsb \
 --input-mc ${MCFILE} \

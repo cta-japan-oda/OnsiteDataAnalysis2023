@@ -1,0 +1,75 @@
+{
+    
+  "energy_regression_features": [
+    "log_intensity",
+    "width",
+    "length",
+    "x",
+    "y",
+    "wl",
+    "skewness",
+    "kurtosis",
+    "time_gradient",
+    "leakage_intensity_width_2",
+    "az_tel",
+    "alt_tel"
+  ],
+
+  "disp_method": "disp_norm_sign",
+
+  "disp_regression_features": [
+    "log_intensity",
+    "width",
+    "length",
+    "wl",
+    "skewness",
+    "kurtosis",
+    "time_gradient",
+    "leakage_intensity_width_2",
+    "az_tel",
+    "alt_tel"
+  ],
+
+  "disp_classification_features": [
+    "log_intensity",
+    "width",
+    "length",
+    "wl",
+    "skewness",
+    "kurtosis",
+    "time_gradient",
+    "leakage_intensity_width_2",
+    "az_tel",
+    "alt_tel"
+  ],
+
+  "particle_classification_features": [
+    "log_intensity",
+    "width",
+    "length",
+    "x",
+    "y",
+    "wl",
+    "signed_skewness",
+    "kurtosis",
+    "signed_time_gradient",
+    "leakage_intensity_width_2",
+    "log_reco_energy",
+    "reco_disp_norm",
+    "reco_disp_sign",
+    "az_tel",
+    "alt_tel"
+  ],
+
+  "train_gamma_src_r_deg": [0, Infinity],
+
+  "source_dependent": false,
+  "mc_nominal_source_x_deg": 0.4,
+  "mc_nominal_source_y_deg": 0.0,
+
+  "observation_mode": "wobble",
+  "n_off_wobble": 1,
+  "source_name": "Crab Nebula",
+  "source_ra": 83.63308333,
+  "source_dec": 22.0145
+}
