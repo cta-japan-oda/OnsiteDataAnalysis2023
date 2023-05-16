@@ -8,7 +8,7 @@
 
 # Input DL1 file 
 ##  DL1 file processed by onsite analysis
-DL1FILE=`ls /fefs/aswg/data/real/DL1/20*/v*/tailcut84/dl1_LST-1.Run09687.0000.h5`
+DL1FILE=`ls /fefs/aswg/data/real/DL1/20*/v*/tailcut84/dl1_LST-1.Run09686.0000.h5`
 ##  DL1 file that you have created on your own
 #DL1FILE=<PATH TO YOUR DL1FILE>
 
@@ -25,7 +25,7 @@ OUTPUTDIR=output
 CONFIG=dl1_to_dl2_standard_config.json
 
 # Job system
-FLAG_JOB=true  # true or false
+FLAG_JOB=false  # true or false
 JOBSCRIPT=jobscript_dl1_to_dl2.sh
 JOBLOGDIR=log
 

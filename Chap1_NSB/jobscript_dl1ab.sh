@@ -12,7 +12,7 @@ ulimit -s unlimited
 ulimit -all
 
 echo
-source /home/kenta.terauchi/Work/anaconda3/etc/profile.d/conda.sh
+source /home/${USER}/Work/anaconda3/etc/profile.d/conda.sh
 conda activate lst-v0.9.10
 #conda info
 LSTCHAIN_VER=`conda list | grep lstchain | awk '{print $2}'`

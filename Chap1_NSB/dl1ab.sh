@@ -7,7 +7,7 @@
 ##### Config #####
 
 # Input DL1 file 
-DL1FILE=`ls /fefs/aswg/data/real/DL1/20*/v*/tailcut84/dl1_LST-1.Run09686.0004.h5`
+DL1FILE=`ls /fefs/aswg/data/real/DL1/20*/v*/tailcut84/dl1_LST-1.Run09686.0000.h5`
 
 # Output directory
 OUTPUTDIR=output
@@ -19,7 +19,7 @@ OUTPUTFILE=`basename ${DL1FILE}`
 CONFIG=dl1ab_standard_config.json
 
 # Job system
-FLAG_JOB=true  # true or false
+FLAG_JOB=false  # true or false
 JOBSCRIPT=jobscript_dl1ab.sh
 JOBLOGDIR=log
 
