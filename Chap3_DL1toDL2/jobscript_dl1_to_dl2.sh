@@ -12,17 +12,18 @@ ulimit -s unlimited
 ulimit -all
 
 echo
-source /home/${USER}/Work/anaconda3/etc/profile.d/conda.sh
-conda activate lst-v0.9.10
+CONDADIR=$(dirname `which conda`)
+source ${CONDADIR}/../etc/profile.d/conda.sh
+conda activate $1
 #conda info
 LSTCHAIN_VER=`conda list | grep lstchain | awk '{print $2}'`
 echo "lstchain version = ${LSTCHAIN_VER}"
 
 CMD=lstchain_dl1_to_dl2
-DL1FILE=$1
-OUTPUTDIR=$2
-MODELDIR=$3
-CONFIG=$4
+DL1FILE=$2
+OUTPUTDIR=$3
+MODELDIR=$4
+CONFIG=$5
 
 
 echo 

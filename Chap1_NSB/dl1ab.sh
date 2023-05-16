@@ -22,6 +22,7 @@ CONFIG=dl1ab_standard_config.json
 FLAG_JOB=false  # true or false
 JOBSCRIPT=jobscript_dl1ab.sh
 JOBLOGDIR=log
+CONDAENV=lst-v0.9.10
 
 
 ###### Execution #####
@@ -44,10 +45,11 @@ elif [ $FLAG_JOB == true ]; then
     fi
 
     sbatch ${JOBSCRIPT} \
+    ${CONDAENV} \
     ${DL1FILE} \
     ${OUTPUTDIR}/${OUTPUTFILE} \
-    ${CONFIG}
-
+    ${CONFIG} \
+    
 fi
 
 #
