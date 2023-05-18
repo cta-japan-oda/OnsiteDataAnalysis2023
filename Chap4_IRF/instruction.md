@@ -19,18 +19,18 @@
 1. specify your conda and environment in the child script `submittee.sh`
 	- replace the conda.sh path with your own one (line.38)
 	- specify the name of the environment in which you will run the lstchain analysis (line.40)
-2. run the parent script `submitter.sh` without any changes to test the shell scripts (not the lstchain python script)
-	- type `sh submitter.sh`
+2. test the shell scripts (not the lstchain python script)
+	- run the parent script `submitter.sh` without any changes, just by typing `sh submitter.sh`
 	- the test is succesful if you find
 		- the overwritten child script displayed
 		- a joblog directory created in the current directory
 3. test the python script
-	- uncomment line.53 and 54 starting with `exec` and line.55 `sh submittee.sh`
+	- uncomment line.53 and 54 starting with `exec` and line.55 `sh submittee.sh` in the parent script
 		- or uncommet line.58 if you prefer to submit it to the batch job system 
 	- run the parent script
 		- will take 10-30 sec; you may have to abort it if longer than 3 min
 	- successful if you find
-		- a help message in the log file: ` cat ./joblog/<date>/stdout.out`
+		- a help message in the log file: `cat ./joblog/<date>/stdout.out`
 5. test it again with the full command
 	- replace the python command in the child script: `COMMAND_TEST` &rarr; `COMMAND` in line.85 and line.86
 	- run the parent script again
