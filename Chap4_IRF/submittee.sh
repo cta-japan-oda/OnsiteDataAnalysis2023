@@ -1,11 +1,16 @@
 #!/bin/bash
+#SBATCH -p short,long,xxl
+#SBATCH -J IRF
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH --mem=10G
+#SBATCH -o joblogdir/%j.out
+
 
 ###################
 ### PREPARATION ###
 ###################
 
-### "you are here"
-BASEDIR=`echo $(cd "$(dirname "$0")" && pwd)`
 ### print functions
 function green () {
     printf "\e[32m%s\e[m \n" "$1"
@@ -30,39 +35,39 @@ yellow "Starting the job at `get_now`"
 
 ### activate conda itself
 # source /fefs/aswg/software/conda/etc/profile.d/conda.sh
-source "/home/shotaro.abe/work/anaconda3/etc/profile.d/conda.sh"
+source "/fefs/aswg/workspace/shotaro.abe/anaconda3/etc/profile.d/conda.sh"
 ### specify the environment
-env_name=lstchain_v0.9.9
-conda activate ${env_name}
+ENVNAME=lstchain_v0.9.9
+conda activate ${ENVNAME}
 green "[CONDA INFO]"
 conda info
 green "[ENVIRONMENT]"
-conda list -n ${env_name}
+conda list -n ${ENVNAME}
 
 
 ##############
 ### INPUTs ###
 ##############
 
-DL2GAMMA="/fefs/aswg/data/mc/DL2/AllSky/20230315_src_dec2276_tuned_nsb/TestingDataset\
-/dec_2276/node_theta_10.0_az_102.199_/\
-dl2_20230315_src_dec2276_tuned_nsb_node_theta_10.0_az_102.199__merged.h5"
-TOOLCONFIG=${BASEDIR}/irf_tool_config_example.json
-IRFOUTDIR=${BASEDIR}
+DL2GAMMA="arg_infile_dl2_gamma"
+TOOLCONFIG="arg_infile_dl3_tool_config"
+IRFOUTDIR="arg_outdir_irf"
 
 
 ##########################
 ### COMMAND DEFINITION ###
 ##########################
 
-### you can find command examples:
+### you can find command examples here:
 ### https://github.com/cta-observatory/cta-lstchain/blob/v0.9.13/lstchain/tools/lstchain_create_irf_files.py
-### just to tesh the python script
+
+### Case.1) just to tesh the python script
 COMMAND_TEST="
     lstchain_create_irf_files
     --help
 "
-### full command
+
+### Case.2) full command
 COMMAND="
     lstchain_create_irf_files
     --input-gamma-dl2 ${DL2GAMMA}
@@ -80,6 +85,7 @@ magenta "---- PYTHON COMMAND STARTING -----"
 echo "${COMMAND_TEST}"
 ${COMMAND_TEST}
 magenta "----- PYTHON COMMAND ENDED -----"
+
 
 ###############
 ### WRAP UP ###
