@@ -3,7 +3,7 @@
 Public repository for the short course of the LST-1 data analysis in the Onsite Data Analysis session of the 2023 extended CTA-Japan ASWG meeting.
 
 ## Scope 
-- chiefly explains how to use lstchain, covering the current standard analysis from DL1 to Flux Estimation
+- chiefly explains how to use the lstchain official scripts, covering the current standard analysis from DL1 to Flux Estimation
 - includes practical use of the batch job system and shell scripts in the La Palma IT facility
 
 ## Implementation
