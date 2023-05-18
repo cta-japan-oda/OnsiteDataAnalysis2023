@@ -5,11 +5,11 @@
 #################
 
 BASEDIR=`echo $(cd "$(dirname "$0")" && pwd)`
-DL2GAMMA="/fefs/aswg/data/mc/DL2/AllSky/20230315_src_dec2276_tuned_nsb/TestingDataset\
-/dec_2276/node_theta_10.0_az_102.199_/\
-dl2_20230315_src_dec2276_tuned_nsb_node_theta_10.0_az_102.199__merged.h5"
-TOOLCONFIG=${BASEDIR}/irf_tool_config_example.json
+DL2DATA="/fefs/aswg/data/real/DL2/20201120/v0.7.1/tailcut84/dl2_LST-1.Run02967.h5"
+IRFFILE="/fefs/aswg/data/mc/IRF/AllSky/20230315_src_dec2276_tuned_nsb/TestingDataset/dec_2276/node_theta_14.984_az_355.158_/irf_20230315_src_dec2276_tuned_nsb_node_theta_14.984_az_355.158_.fits.gz"
+TOOLCONFIG=${BASEDIR}/../Chap4_IRF/irf_tool_config_example.json
 OUTDIR=${BASEDIR}/
+SOURCENAME="Crab Nebula"
 
 
 ##############################
@@ -36,9 +36,11 @@ mkdir -p ${JOBLOGDIR}
 
 ### make a temporary file with arguments replaced
 sed -e "s:joblogdir:${JOBLOGDIR}:g" \
-    -e "s:arg_infile_dl2_gamma:${DL2GAMMA}:g" \
+    -e "s:arg_infile_dl2_data:${DL2DATA}:g" \
+    -e "s:arg_infile_irf:${IRFFILE}:g" \
     -e "s:arg_infile_dl3_tool_config:${TOOLCONFIG}:g" \
-    -e "s:arg_outdir_irf:${OUTDIR}:g" \
+    -e "s:arg_outdir_dl3:${OUTDIR}:g" \
+    -e "s:arg_str_source_name:${SOURCENAME}:g" \
     ${SCRIPTSUB} > ${SCRIPTTEMP}
 
 

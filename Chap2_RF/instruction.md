@@ -1,7 +1,7 @@
 # Instruction for code tests
 
 ## Aim
-- to test if the lstchain script `lstchain_create_irf_files.py` works correctly or not
+- to test if the lstchain script `lstchain_mc_trainpipe.py` works correctly or not
 
 ## Structure
 - two hierarchical shell scripts: parent `submitter.sh` and child `submittee.sh`:
@@ -32,8 +32,10 @@
 	- successful if you find
 		- a help message in the log file: `cat ./joblog/<date>/stdout.out`
 5. test it again with the full command
+	- comment line.53-55 out in the parent script (lines starting with `exec` and `sh`), and uncomment line.58 starting with `sbatch`
+		- unlike the previous test, here you will be using the batch job instead of training the RFs on the command line
 	- replace the python command in the child script: `COMMAND_TEST` &rarr; `COMMAND` in line.85 and line.86
-	- run the parent script again
+	- run the parent script again, which will submit the child script as a batch job
 	- successful if you find
-		- an irf file produced here: `./irf.fits.gz`
-		- no error in the log file
+		- random forest files produced here: `./*.sav`
+		- no error in the log file: `cat ./joblog/<date>/<jobid>.out`
