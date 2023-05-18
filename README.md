@@ -11,6 +11,13 @@ Public repository for the short course of the LST-1 data analysis in the Onsite 
 
 ## Members in charge
 - Y. Kobayashi: yukihok (,at,) icrr.u-tokyo.ac.jp
+  - Chap.0 Slurm
 - K. Terauchi: terauchi.kenta.74s (,at,) st.kyoto-u.ac.jp
+  - Chap.1 NSB tuning
+  - Chap.3 DL1 to DL2
 - J. R. Baxter: joshua28 (,at,) icrr.u-tokyo.ac.jp
+  - Chap.6 DL3 to Flux
 - S. Abe: shotaro (,at,) icrr.u-tokyo.ac.jp
+  - Chap.2 RF
+  - Chap.4 IRF
+  - Chap.5 DL2 to DL3
