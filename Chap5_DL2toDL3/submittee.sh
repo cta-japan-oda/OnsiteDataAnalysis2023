@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -p short,long,xxl
-#SBATCH -J IRF
+#SBATCH -J DL2->DL3
 #SBATCH -N 1
 #SBATCH -n 1
 #SBATCH --mem=10G
@@ -49,31 +49,31 @@ conda list -n ${ENVNAME}
 ### INPUTs ###
 ##############
 
-DL2GAMMA="arg_infile_dl2_gamma"
-TOOLCONFIG="arg_infile_dl3_tool_config"
-IRFOUTDIR="arg_outdir_irf"
+DL2DATA=arg_infile_dl2_data
+OUTDIR=arg_outdir_dl3
+IRFFILE=arg_infile_irf
+TOOLCONFIG=arg_infile_dl3_tool_config 
+SOURCENAME="arg_str_source_name"
 
 
 ##########################
 ### COMMAND DEFINITION ###
 ##########################
 
-### you can find command examples here:
-### https://github.com/cta-observatory/cta-lstchain/blob/v0.9.13/lstchain/tools/lstchain_create_irf_files.py
-
 ### Case.1) just to tesh the python script
 COMMAND_TEST="
-    lstchain_create_irf_files
+    lstchain_create_dl3_file
     --help
 "
 
 ### Case.2) full command
 COMMAND="
-    lstchain_create_irf_files
-    --input-gamma-dl2 ${DL2GAMMA}
-    --output-irf-file "${IRFOUTDIR}/irf.fits.gz"
+    lstchain_create_dl3_file
+    -d ${DL2DATA}
+    -o ${OUTDIR}
+    --input-irf ${IRFFILE}
     --config ${TOOLCONFIG}
-    --energy-dependent-gh
+    --source-name '${SOURCENAME}'
 "
 
 
@@ -83,7 +83,7 @@ COMMAND="
 
 magenta "---- PYTHON COMMAND STARTING -----"
 echo "${COMMAND_TEST}"
-${COMMAND_TEST}
+eval ${COMMAND_TEST}
 magenta "----- PYTHON COMMAND ENDED -----"
 
 

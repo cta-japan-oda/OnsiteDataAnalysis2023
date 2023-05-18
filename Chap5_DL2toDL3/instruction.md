@@ -1,7 +1,7 @@
 # Instruction for code tests
 
 ## Aim
-- to test if the lstchain script `lstchain_create_irf_files.py` works correctly or not
+- to test if the lstchain script `lstchain_create_dl3_file.py` works correctly or not
 
 ## Structure
 - two hierarchical shell scripts: parent `submitter.sh` and child `submittee.sh`:
@@ -35,5 +35,5 @@
 	- replace the python command in the child script: `COMMAND_TEST` &rarr; `COMMAND` in line.85 and line.86
 	- run the parent script again
 	- successful if you find
-		- an irf file produced here: `./irf.fits.gz`
+		- a DL3 file produced here: `./dl3_*.fits`
 		- no error in the log file

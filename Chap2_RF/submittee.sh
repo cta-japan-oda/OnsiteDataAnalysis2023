@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH -p xxl
+#SBATCH -p long,xxl
 #SBATCH -J trainRF
-#SBATCH -N 4
-#SBATCH -n 1
+#SBATCH -N 1
+#SBATCH -n 4
 #SBATCH --mem=10G
-#SBATCH -o %j.out
+#SBATCH -o joblogdir/%j.out
 #--exclusive
 
 
@@ -12,9 +12,6 @@
 ### PREPARATION ###
 ###################
 
-### memory usage
-# ulimit -l unlimited
-# ulimit -s unlimited
 ### print functions
 function green () {
     printf "\e[32m%s\e[m \n" "$1"
@@ -39,39 +36,42 @@ yellow "Starting the job at `get_now`"
 
 ### activate conda itself
 # source /fefs/aswg/software/conda/etc/profile.d/conda.sh
-source "/home/shotaro.abe/work/anaconda3/etc/profile.d/conda.sh"
+source "/fefs/aswg/workspace/shotaro.abe/anaconda3/etc/profile.d/conda.sh"
 ### specify the environment
-env_name=lstchain_v0.9.9
-conda activate ${env_name}
+ENVNAME=lstchain_v0.9.9
+conda activate ${ENVNAME}
 green "[CONDA INFO]"
 conda info
 green "[ENVIRONMENT]"
-conda list -n ${env_name}
+conda list -n ${ENVNAME}
 
 
 ##############
 ### INPUTs ###
 ##############
 
-MC_GAMMA="arg_path_training_gamma"
-MC_PROTON="arg_path_training_proton"
-CONFIG="arg_path_lstchain_config"
-MODEL_OUTPUT_DIR="arg_path_model_outdir"
+DL1GAMMA="arg_infile_dl1_gamma"
+DL1PROTON="arg_infile_dl1_proton"
+CONFIG="arg_infile_lstchain_config"
+OUTDIR="arg_outdir_random_forests"
 
 
 ##########################
 ### COMMAND DEFINITION ###
 ##########################
 
+### Case.1) just to tesh the python script
 COMMAND_TEST="
     lstchain_mc_trainpipe
     --help
 "
+
+### Case.2) full command
 COMMAND="
     lstchain_mc_trainpipe
-    --input-file-gamma=${MC_GAMMA}
-    --input-file-proton=${MC_PROTON}
-    --output-dir=${MODEL_OUTPUT_DIR}
+    --input-file-gamma=${DL1GAMMA}
+    --input-file-proton=${DL1PROTON}
+    --output-dir=${OUTDIR}
     --config=${CONFIG}
 "
 
