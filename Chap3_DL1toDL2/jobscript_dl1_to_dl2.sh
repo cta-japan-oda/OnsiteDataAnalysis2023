@@ -1,5 +1,4 @@
 #!/bin/sh
-#SBATCH -A aswg
 #SBATCH -p short
 #SBATCH -t 2:00:00
 #SBATCH -J dl1_to_dl2

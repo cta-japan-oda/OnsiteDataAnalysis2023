@@ -7,7 +7,7 @@
 BASEDIR=`echo $(cd "$(dirname "$0")" && pwd)`
 DL1BASEDIR="/fefs/aswg/data/mc/DL1/AllSky/20230315_src_dec2276_tuned_nsb/TrainingDataset/dec_2276"
 DL1GAMMA="${DL1BASEDIR}/GammaDiffuse/node_corsika_theta_16.087_az_108.090_/dl1_simtel_corsika_theta_16.087_az_108.090_run1.h5"
-DL1PROTON="${DL1BASEDIR}/Protons/Protons/node_theta_16.087_az_108.090_/dl1_simtel_corsika_theta_16.087_az_108.090_run1.h5"
+DL1PROTON="${DL1BASEDIR}/Protons/node_theta_16.087_az_108.090_/dl1_simtel_corsika_theta_16.087_az_108.090_run1.h5"
 CONFIG=${BASEDIR}/lstchain_config_example.json
 OUTDIR=${BASEDIR}/
 

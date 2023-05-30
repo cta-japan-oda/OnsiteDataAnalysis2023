@@ -83,7 +83,7 @@ COMMAND="
 
 magenta "---- PYTHON COMMAND STARTING -----"
 echo "${COMMAND_TEST}"
-${COMMAND_TEST}
+eval ${COMMAND_TEST}
 magenta "----- PYTHON COMMAND ENDED -----"
 
 
