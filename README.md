@@ -7,7 +7,7 @@ Public repository for the short course of the LST-1 data analysis in the Onsite 
 - includes practical use of the batch job system and shell scripts in the La Palma IT facility
 
 ## Implementation
-- based on lstchain v0.9.10, gammapy v0.20
+- based on lstchain v0.9.10, gammapy v1.0.1
 
 ## Members in charge
 - Y. Kobayashi: yukihok (,at,) icrr.u-tokyo.ac.jp
